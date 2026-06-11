@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/cards")
 @RequiredArgsConstructor
-public class CardController {
+public class CardUserController {
 
     private final CardService cardService;
 

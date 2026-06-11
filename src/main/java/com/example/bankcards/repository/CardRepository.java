@@ -12,9 +12,10 @@ import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    @Query("SELECT c FROM Card c WHERE c.owner.id = :userId AND " +
-            "(:status IS NULL OR c.cardStatus = :status) AND " +
-            "(:mask IS NULL OR c.cardMask LIKE %:mask%)")
+    @Query("SELECT c FROM Card c WHERE c.owner.id = :userId " +
+            "AND (:status IS NULL OR c.cardStatus = :status) " +
+            "AND (:mask IS NULL OR c.cardMask LIKE %:mask%) " +
+            "AND c.isDeleted = false")
     Page<Card> searchUserCards(@Param("userId") Long userId,
                                @Param("status") CardStatus status,
                                @Param("mask") String mask,

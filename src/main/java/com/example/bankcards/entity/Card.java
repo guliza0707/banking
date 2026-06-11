@@ -40,6 +40,8 @@ public class Card {
     @JoinColumn(name = "user_id", nullable = false)
     private User owner;
 
-
-
+    @Builder.Default
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted = false;
 }
+

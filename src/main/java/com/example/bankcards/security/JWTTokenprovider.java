@@ -48,9 +48,7 @@ public class JWTTokenprovider {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(authToken);
             return true;
         } catch (JwtException | IllegalArgumentException ex) {
-
+            return false;
         }
-        return false;
     }
-
 }
