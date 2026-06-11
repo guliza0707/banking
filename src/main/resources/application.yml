@@ -6,3 +6,8 @@
   - Указать порт приложения.
   - Настроить параметры безопасности и JWT.
   - Включить Swagger UI.
+
+
+spring:
+  liquibase:
+    change-log: classpath:db/migration/db.changelog-master.yaml
