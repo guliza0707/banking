@@ -2,6 +2,7 @@ package com.example.bankcards.controller;
 
 import com.example.bankcards.dto.request.TransferRequest;
 import com.example.bankcards.dto.response.CardResponse;
+import com.example.bankcards.enums.CardStatus;
 import com.example.bankcards.security.UserPrincipal;
 import com.example.bankcards.service.CardService;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +24,11 @@ public class CardController {
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Page<CardResponse>> getMyCards(
             @AuthenticationPrincipal UserPrincipal userPrincipal,
-            Pageable pageable){
-        return  ResponseEntity.ok(cardService.getUserCards(userPrincipal.getId(),pageable));
+            @RequestParam(required = false) CardStatus status,
+            @RequestParam(required = false) String mask,
+            Pageable pageable) {
+        Page<CardResponse> cards = cardService.getUserCards(userPrincipal.getId(), status, mask, pageable);
+        return ResponseEntity.ok(cards);
     }
 
     @PostMapping("/{id}/block")

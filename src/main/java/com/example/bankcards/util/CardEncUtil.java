@@ -8,7 +8,6 @@ import java.util.Base64;
 
 @Component
 public class CardEncUtil {
-    // Amaliyotda bu kalit application.properties faylidan (vault yoki env orqali) o'qilishi kerak
     private static final String ALGORITHM = "AES";
     private static final byte[] KEY = "MySecretKeyForCards_123456789012".getBytes(); // 32 byte for AES-256
 
@@ -28,7 +27,6 @@ public class CardEncUtil {
         if (cardNumber == null || cardNumber.length() < 16) {
             throw new IllegalArgumentException("Invalid card number format");
         }
-        // Format: **** **** **** 1234
         String lastFour = cardNumber.substring(cardNumber.length() - 4);
         return "**** **** **** " + lastFour;
     }
