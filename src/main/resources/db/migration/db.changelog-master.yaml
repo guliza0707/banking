@@ -74,3 +74,31 @@ databaseChangeLog:
                     foreignKeyName: fk_card_user
                     referencedTableName: users
                     referencedColumnNames: id
+
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: 2-insert-default-users
+      author: backend-developer
+      changes:
+        # 1. Admin foydalanuvchi -> Asl paroli: admin123
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "guliza" }
+              - column: { name: password, value: "$2a$10$7R9MvclEgwQp8Gv/LzG9xe6B6n8dE99pSshXo86Hk.u2v8.fI.eWG" }
+              - column: { name: role, value: "ADMIN" } # Standart formatda saqlaymiz
+
+        # 2. Oddiy user -> Asl paroli: user123 (Xesh kodi o'zgartirildi!)
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "guliza_dev" }
+              - column: { name: password, value: "$2a$10$e96ZymxV6F8mU2wG.uK8EexXgZ0M5bXz1P6qYwN7uR7vI3qMvCgDG" } # user123 paroli uchun xesh
+              - column: { name: role, value: "USER" }

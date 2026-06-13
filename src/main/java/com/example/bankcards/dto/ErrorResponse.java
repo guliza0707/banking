@@ -1,9 +1,20 @@
 package com.example.bankcards.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ErrorResponse {
-    public ErrorResponse(int value, String s, String message, LocalDateTime now) {
-    }
+    private int status;
+    private String error;
+    private String message;
+    private LocalDateTime timestamp;
 }

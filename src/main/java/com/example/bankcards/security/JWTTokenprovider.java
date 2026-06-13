@@ -13,7 +13,7 @@ import java.util.Date;
 @Component
 @Slf4j
 public class JWTTokenprovider {
-    private static final String JWT_SECRET = "SecretKeyForJwtSigningMustBeVeryLongAndSecure1234567890!";
+    private static final String JWT_SECRET = "SecretKeyForJwtSigningMustBeVeryLongAndSecure1234567890!_ExtraCharactersFor512BitSecurity";
     private static final long JWT_EXPIRATION_MS = 86400000;
 
     private final Key key = Keys.hmacShaKeyFor(JWT_SECRET.getBytes());

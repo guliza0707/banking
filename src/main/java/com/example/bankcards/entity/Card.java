@@ -21,7 +21,7 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "enc_card_number", nullable = false, unique = true)
+    @Column(name = "encrypted_card_number", nullable = false, unique = true)
     private String encCardNumber;
 
     @Column(name = "card_mask", nullable = false)
@@ -31,6 +31,7 @@ public class Card {
     private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
     private CardStatus cardStatus;
 
     @Column(name = "expiry_date", nullable = false)
